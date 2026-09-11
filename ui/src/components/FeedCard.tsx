@@ -437,7 +437,7 @@ export function FeedCard({
     <Card
       data-fc="card"
       className={cn(
-        "flex-row group ml-3 mr-3 md:ml-0 my-2 w-(--sz-calc-1) md:w-full items-center gap-2 p-(--sz-18px) text-xs",
+        "flex-row group ml-3 mr-3 md:ml-0 my-2 w-(--sz-calc-1) md:w-(--sz-calc-2) items-center gap-2 p-(--sz-18px) text-xs",
         "transition-(--tp-background-color-border-color) duration-150",
         content.link && "cursor-pointer hover:bg-accent hover:border-muted-foreground/30",
         className,

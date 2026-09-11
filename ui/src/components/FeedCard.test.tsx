@@ -61,6 +61,8 @@ describe("FeedCard", () => {
 
     expect(link).not.toBeNull();
     expect(link?.className).toContain("w-full");
+    expect(card?.className).toContain("w-(--sz-calc-1)");
+    expect(card?.className).toContain("md:w-(--sz-calc-2)");
     expect(link?.contains(card ?? null)).toBe(true);
 
     card?.click();
