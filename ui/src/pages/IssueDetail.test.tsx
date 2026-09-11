@@ -2136,6 +2136,8 @@ describe("IssueDetail", () => {
     );
     expect(panel).not.toBeNull();
     expect(panel?.className).toContain("max-h-(--sz-85dvh)");
+    expect(panel?.className).toContain("w-full");
+    expect(panel?.className).toContain("max-w-none");
     expect(panel?.textContent).toContain("Task side panel");
     expect(panel?.querySelector('[data-slot="sheet-close"]')).not.toBeNull();
   });
