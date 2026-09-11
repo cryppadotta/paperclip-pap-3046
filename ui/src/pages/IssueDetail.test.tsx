@@ -2641,7 +2641,7 @@ describe("IssueDetail", () => {
     });
   });
 
-  it("keeps inbox archive actions scoped to an inbox-origin task", async () => {
+  it("archives a task-page issue with y and returns to the inbox", async () => {
     mockLocation.state = createIssueDetailLocationState(
       "Tasks",
       "/issues/all",
@@ -2677,7 +2677,10 @@ describe("IssueDetail", () => {
     document.dispatchEvent(
       new KeyboardEvent("keydown", { key: "y", bubbles: true }),
     );
-    expect(mockIssuesApi.archiveFromInbox).not.toHaveBeenCalled();
+    await waitForAssertion(() => {
+      expect(mockIssuesApi.archiveFromInbox).toHaveBeenCalledWith("issue-1");
+      expect(mockNavigate).toHaveBeenCalledWith("/inbox", { replace: true });
+    });
   });
 
   it("arms the inbox archive shortcut only for the selected inbox row", async () => {
