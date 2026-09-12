@@ -130,8 +130,8 @@ vi.mock("../lib/assignees", () => ({
 }));
 
 vi.mock("./StatusIcon", () => ({
-  StatusIcon: ({ status, blockerAttention, className }: { status: string; blockerAttention?: Issue["blockerAttention"]; className?: string }) => (
-    <span className={className} data-testid="status-icon" data-status-icon-state={blockerAttention?.state}>{status}</span>
+  StatusIcon: ({ status, blockerAttention, className, size }: { status: string; blockerAttention?: Issue["blockerAttention"]; className?: string; size?: string }) => (
+    <span className={className} data-testid="status-icon" data-size={size ?? "md"} data-status-icon-state={blockerAttention?.state}>{status}</span>
   ),
 }));
 
@@ -530,6 +530,7 @@ describe("IssueProperties", () => {
       '[data-property-label="Status"] + [data-property-value="true"] [data-testid="status-icon"]',
     );
     expect(statusVisual).not.toBeNull();
+    expect(statusVisual?.getAttribute("data-size")).toBe("md");
     expect(statusVisual?.classList).toContain("mx-1");
     expect(statusVisual?.classList).not.toContain("size-6");
     expect(surface?.querySelector('[data-property-section="true"] > div')?.classList)
