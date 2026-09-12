@@ -6752,11 +6752,11 @@ export function IssueDetail({ tasksTab }: { tasksTab?: TaskSidePanelProps["tasks
       )}
     >
       {streamlinedTaskDetailEnabled ? (
-        <div className="flex min-w-0 items-start gap-2 sm:items-center sm:pr-8">
-          <div className="hidden sm:block">{issueStatusControl}</div>
+        <div className="flex min-w-0 items-start gap-2 md:items-center md:pr-8">
+          <div className="hidden md:block">{issueStatusControl}</div>
           <div
             data-slot="task-detail-title"
-            className="flex min-w-0 flex-1 flex-col items-stretch gap-1 sm:flex-row sm:items-baseline sm:gap-2"
+            className="flex min-w-0 flex-1 items-baseline gap-2"
           >
             <InlineEditor
               value={issue.title}
@@ -6766,7 +6766,7 @@ export function IssueDetail({ tasksTab }: { tasksTab?: TaskSidePanelProps["tasks
             />
             <span
               data-slot="task-title-identifier"
-              className="self-start font-mono text-sm text-muted-foreground sm:shrink-0"
+              className="hidden shrink-0 font-mono text-sm text-muted-foreground md:inline"
             >
               {issue.identifier ?? issue.id.slice(0, 8)}
             </span>
@@ -6777,11 +6777,16 @@ export function IssueDetail({ tasksTab }: { tasksTab?: TaskSidePanelProps["tasks
       <div
         className={cn(
           "flex min-w-0 flex-wrap items-center gap-2",
-          streamlinedTaskDetailEnabled && "gap-x-3 gap-y-2 sm:gap-x-6 sm:pl-7",
+          streamlinedTaskDetailEnabled && "gap-x-3 gap-y-2 md:gap-x-6 md:pl-7",
         )}
       >
         {streamlinedTaskDetailEnabled ? (
-          <div className="sm:hidden">{issueStatusControl}</div>
+          <div className="md:hidden">{issueStatusControl}</div>
+        ) : null}
+        {streamlinedTaskDetailEnabled ? (
+          <span className="shrink-0 font-mono text-sm text-muted-foreground md:hidden">
+            {issue.identifier ?? issue.id.slice(0, 8)}
+          </span>
         ) : null}
         {!streamlinedTaskDetailEnabled ? issueStatusControl : null}
         {/* PAP-411: priority UI hidden behind SHOW_TASK_PRIORITY_UI. */}
